@@ -1,4 +1,6 @@
-import Sudoku hiding (solve, Box)
+module Main (main) where
+
+import FastSudoku hiding (solve, Box)
 import Data.Char (toLower)
 
 main = do
@@ -17,7 +19,7 @@ selectOutputStep fos = do
   putStrLn "Output to File or stdout?"
   outChoice <- getLine >>= return . fmap toLower
   case outChoice of
-    "file" ->   return ()
+    "file"   -> return ()
     "stdout" -> return ()
     _        -> do
       putStrLn "I can't understand that."
@@ -88,7 +90,7 @@ solveToString s =
   let puzzle = readPuzzle s in
   "-----------------------NEW PUZZLE------------------------\n" ++
     prettyShow puzzle ++
-    "\n-------------------------SOLVING-------------------------\n" ++
+    "\n------------------------SOLUTIONS------------------------\n" ++
     stringifySolns 1 (solvePuzzle puzzle)
   where
     stringifySolns :: Int -> [Puzzle] -> String
