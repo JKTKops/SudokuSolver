@@ -35,7 +35,7 @@ prettyShow = prettyShowH 0 0 . (sortOn index) where
   prettyShowH :: Int -> Int -> Puzzle -> String
   prettyShowH _ _ [] = ""
   prettyShowH i j (b:bs)
-    | i == maxl && j == maxl = show b
+    | i == maxl && j == maxl = show b ++ "\n"
     | i == maxl && j `mod` blockSize == blockSize - 1 =
       show b ++ "\n\n" ++ prettyShowH 0 (j + 1) bs
     | i == maxl =
